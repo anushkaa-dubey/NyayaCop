@@ -145,11 +145,6 @@ const ComplaintDetails = styled.div`
   line-height: 1.4;
 `;
 
-const ComplainantInfo = styled.div`
-  margin-bottom: 0.5rem;
-  font-weight: 500;
-`;
-
 const ActionButton = styled.button`
   padding: 0.8rem 1.5rem;
   background-color: #1a237e;
@@ -164,7 +159,7 @@ const ActionButton = styled.button`
   }
 `;
 
-const PoliceDashboard: React.FC = () => {
+const VictimDashboard: React.FC = () => {
   const navigate = useNavigate();
   const [complaints, setComplaints] = useState<Complaint[]>([]);
   const [user, setUser] = useState<any>(null);
@@ -187,8 +182,8 @@ const PoliceDashboard: React.FC = () => {
   };
 
   const handleComplaintClick = (complaint: Complaint) => {
-    // Navigate to FIR report view
-    navigate(`/fir-report/${complaint.id}`);
+    // Navigate to complaint details
+    navigate(`/complaints/${complaint.id}`);
   };
 
   if (!user) {
@@ -199,8 +194,8 @@ const PoliceDashboard: React.FC = () => {
     <DashboardContainer>
       <Content>
         <WelcomeSection>
-          <WelcomeTitle>Welcome, Inspector {user.name}</WelcomeTitle>
-          <WelcomeSubtitle>Manage and process complaints efficiently</WelcomeSubtitle>
+          <WelcomeTitle>Welcome, {user.name}</WelcomeTitle>
+          <WelcomeSubtitle>Track your complaints and get legal assistance</WelcomeSubtitle>
         </WelcomeSection>
 
         <StatsGrid>
@@ -223,7 +218,7 @@ const PoliceDashboard: React.FC = () => {
         </StatsGrid>
 
         <ComplaintsSection>
-          <SectionTitle>Recent Complaints</SectionTitle>
+          <SectionTitle>Your Complaints</SectionTitle>
           <ComplaintList>
             {complaints.map(complaint => (
               <ComplaintCard
@@ -239,9 +234,6 @@ const PoliceDashboard: React.FC = () => {
                   </ComplaintStatus>
                 </ComplaintHeader>
                 <ComplaintDetails>
-                  <ComplainantInfo>
-                    Filed by: {complaint.complainantName}
-                  </ComplainantInfo>
                   <p>{complaint.text}</p>
                   {complaint.firNumber && (
                     <p>FIR Number: {complaint.firNumber}</p>
@@ -257,7 +249,7 @@ const PoliceDashboard: React.FC = () => {
 
         <div style={{ textAlign: 'center', marginTop: '2rem' }}>
           <ActionButton onClick={handleNewComplaint}>
-            Analyze New Complaint
+            File New Complaint
           </ActionButton>
         </div>
       </Content>
@@ -265,4 +257,4 @@ const PoliceDashboard: React.FC = () => {
   );
 };
 
-export default PoliceDashboard; 
+export default VictimDashboard; 

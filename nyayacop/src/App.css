@@ -16,15 +16,22 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: #f8f9fa;
 }
 
 .main-content {
   flex: 1;
-  padding: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  width: 100%;
+}
+
+/* Remove old styles */
+.mode-toggle,
+.switch,
+.slider,
+.mode-label,
+.results-container,
+.suggestions-section,
+.judgments-section,
+.procedural-steps {
+  display: none;
 }
 
 /* Mode Toggle Switch */

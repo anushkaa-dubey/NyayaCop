@@ -3,33 +3,27 @@ import type { AnalysisResult, Complaint, LegalRight, IPCSection } from '../types
 export const mockAnalysisResult: AnalysisResult = {
   suggestions: [
     {
-      section: 'IPC 354A - Sexual Harassment',
-      description: 'Whoever commits physical contact and advances involving unwelcome and explicit sexual overtures...',
-      act: 'Indian Penal Code',
-      isCognizable: true,
-      isBailable: true,
-      punishment: 'Imprisonment up to 3 years, or fine, or both'
+      section: 'IPC 354',
+      description: 'Assault or criminal force to woman with intent to outrage her modesty',
+      confidence: 0.95
     },
     {
-      section: 'IPC 509 - Word, gesture or act intended to insult the modesty of a woman',
-      description: 'Whoever, intending to insult the modesty of any woman, utters any word, makes any sound or gesture...',
-      act: 'Indian Penal Code',
-      isCognizable: true,
-      isBailable: true,
-      punishment: 'Imprisonment up to 1 year, or fine, or both'
+      section: 'IPC 509',
+      description: 'Word, gesture or act intended to insult the modesty of a woman',
+      confidence: 0.85
     }
   ],
   judgments: [
     {
       title: 'Vishaka vs State of Rajasthan',
       year: 1997,
-      summary: 'Landmark judgment on sexual harassment at workplace',
-      fullText: 'Full text of the judgment...',
-      citation: 'AIR 1997 SC 3011'
+      summary: 'Landmark case on sexual harassment at workplace',
+      fullText: '...',
+      relevantSections: ['IPC 354', 'IPC 509']
     }
   ],
   proceduralSteps: [
-    'File FIR at the nearest police station',
+    'File a written complaint with the police station',
     'Get a copy of the FIR',
     'Cooperate with the investigation',
     'Attend court hearings when summoned'
@@ -39,20 +33,34 @@ export const mockAnalysisResult: AnalysisResult = {
 export const mockComplaints: Complaint[] = [
   {
     id: '1',
-    text: 'I was harassed at my workplace by my supervisor',
-    language: 'English',
+    text: 'I was harassed at my workplace by my supervisor. He made inappropriate comments and touched me without consent.',
+    language: 'en',
     status: 'filed',
-    createdAt: '2024-03-15T10:30:00Z',
-    assignedOfficer: 'Inspector Rajesh Kumar',
-    firNumber: 'FIR-2024-001',
-    appliedSections: ['IPC 354A', 'IPC 509']
+    complainantName: 'Anushka Sharma',
+    complainantId: 'VICT001',
+    filedAt: '2024-03-15T10:30:00Z',
+    firNumber: 'FIR/2024/001',
+    appliedSections: ['IPC 354', 'IPC 509'],
+    analysisResult: mockAnalysisResult
   },
   {
     id: '2',
-    text: 'Someone stole my mobile phone from my bag',
-    language: 'Hindi',
+    text: 'My neighbor has been playing loud music late at night, causing disturbance to the entire neighborhood.',
+    language: 'en',
+    status: 'pending',
+    complainantName: 'Rajesh Kumar',
+    complainantId: 'VICT002',
+    filedAt: '2024-03-16T15:45:00Z'
+  },
+  {
+    id: '3',
+    text: 'Someone has been sending threatening messages to my family members.',
+    language: 'hi',
     status: 'analyzed',
-    createdAt: '2024-03-16T14:20:00Z'
+    complainantName: 'Priya Patel',
+    complainantId: 'VICT003',
+    filedAt: '2024-03-17T09:15:00Z',
+    appliedSections: ['IPC 507']
   }
 ];
 
