@@ -4,16 +4,27 @@ import '../styles/ComplaintForm.css';
 
 interface ComplaintFormProps {
   onAnalyze: (complaint: string, language: Language) => void;
+  onCancel: () => void;
   isCitizenMode: boolean;
+  hasResults: boolean;
 }
 
-const ComplaintForm: React.FC<ComplaintFormProps> = ({ onAnalyze, isCitizenMode }) => {
+const ComplaintForm: React.FC<ComplaintFormProps> = ({
+  onAnalyze,
+  onCancel,
+  isCitizenMode,
+  hasResults
+}) => {
   const [complaint, setComplaint] = useState('');
   const [language, setLanguage] = useState<Language>('English');
   const [isRecording, setIsRecording] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!complaint.trim()) {
+      // Show error toast will be handled by parent
+      return;
+    }
     onAnalyze(complaint, language);
   };
 
@@ -24,6 +35,11 @@ const ComplaintForm: React.FC<ComplaintFormProps> = ({ onAnalyze, isCitizenMode 
       setComplaint('This is a simulated voice input text...');
       setIsRecording(false);
     }, 2000);
+  };
+
+  const handleCancel = () => {
+    setComplaint('');
+    onCancel();
   };
 
   return (
@@ -58,14 +74,26 @@ const ComplaintForm: React.FC<ComplaintFormProps> = ({ onAnalyze, isCitizenMode 
           className="voice-input-button"
           onClick={handleVoiceInput}
           disabled={isRecording}
+          title="Use voice input"
         >
           {isRecording ? '🎤 Processing...' : '🎤'}
         </button>
       </div>
 
-      <button type="submit" className="analyze-button">
-        {isCitizenMode ? "Get Help" : "Analyze Complaint"}
-      </button>
+      <div className="form-buttons">
+        <button type="submit" className="analyze-button">
+          {isCitizenMode ? "Get Help" : "Analyze Complaint"}
+        </button>
+        {hasResults && (
+          <button
+            type="button"
+            className="cancel-button"
+            onClick={handleCancel}
+          >
+            Cancel
+          </button>
+        )}
+      </div>
     </form>
   );
 };

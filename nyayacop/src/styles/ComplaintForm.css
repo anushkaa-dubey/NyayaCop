@@ -93,12 +93,15 @@
   cursor: not-allowed;
 }
 
-.analyze-button {
-  display: block;
-  width: 100%;
+.form-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.analyze-button,
+.cancel-button {
+  flex: 1;
   padding: 1rem;
-  background-color: #3498db;
-  color: white;
   border: none;
   border-radius: 5px;
   font-size: 1.1rem;
@@ -106,8 +109,22 @@
   transition: background-color 0.3s ease;
 }
 
+.analyze-button {
+  background-color: #3498db;
+  color: white;
+}
+
 .analyze-button:hover {
   background-color: #2980b9;
+}
+
+.cancel-button {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.cancel-button:hover {
+  background-color: #c0392b;
 }
 
 @media (max-width: 768px) {
@@ -123,5 +140,9 @@
 
   .language-select select {
     width: 100%;
+  }
+
+  .form-buttons {
+    flex-direction: column;
   }
 } 

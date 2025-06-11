@@ -11,10 +11,18 @@
   transform: translateY(-2px);
 }
 
+.result-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
 .section-title {
   color: #2c3e50;
   font-size: 1.5rem;
-  margin-bottom: 0.5rem;
+  margin: 0;
+  flex: 1;
 }
 
 .section-description {
@@ -31,11 +39,56 @@
   border-radius: 20px;
   font-size: 0.9rem;
   font-weight: 500;
+  margin-left: 1rem;
+}
+
+.legal-details {
+  background-color: #f8f9fa;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.detail-item:last-child {
+  margin-bottom: 0;
+}
+
+.detail-label {
+  color: #7f8c8d;
+  font-weight: 500;
+}
+
+.detail-value {
+  font-weight: 500;
+}
+
+.detail-value.yes {
+  color: #2ecc71;
+}
+
+.detail-value.no {
+  color: #e74c3c;
 }
 
 @media (max-width: 768px) {
   .result-card {
     margin: 0.5rem;
     padding: 1rem;
+  }
+
+  .result-card-header {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .act-badge {
+    margin-left: 0;
   }
 } 

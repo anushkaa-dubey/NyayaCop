@@ -1,3 +1,14 @@
+export type Language = 'English' | 'Hindi' | 'Marathi' | 'Tamil';
+
+export type UserRole = 'police' | 'victim';
+
+export interface User {
+  id: string;
+  name: string;
+  role: UserRole;
+  email: string;
+}
+
 export interface LegalSuggestion {
   section: string;
   description: string;
@@ -11,9 +22,8 @@ export interface Judgment {
   title: string;
   year: number;
   summary: string;
-  fullDetails: string;
+  fullText: string;
   citation: string;
-  keyPoints: string[];
 }
 
 export interface AnalysisResult {
@@ -22,4 +32,28 @@ export interface AnalysisResult {
   proceduralSteps: string[];
 }
 
-export type Language = 'English' | 'Hindi' | 'Marathi' | 'Tamil'; 
+export interface Complaint {
+  id: string;
+  text: string;
+  language: Language;
+  status: 'pending' | 'analyzed' | 'filed' | 'rejected';
+  createdAt: string;
+  assignedOfficer?: string;
+  firNumber?: string;
+  appliedSections?: string[];
+}
+
+export interface LegalRight {
+  title: string;
+  description: string;
+  section?: string;
+}
+
+export interface IPCSection {
+  number: string;
+  title: string;
+  description: string;
+  punishment: string;
+  isCognizable: boolean;
+  isBailable: boolean;
+} 
