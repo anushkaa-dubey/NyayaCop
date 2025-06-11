@@ -1,3 +1,6 @@
+"Nyaaya cop" refers to a new term coined in the context of the Bharatiya Nyaya Sanhita (BNS), which replaces the Indian Penal Code (IPC). The BNS is a new set of criminal laws in India, and "Nyaaya" is the Hindi word for "justice"
+
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
