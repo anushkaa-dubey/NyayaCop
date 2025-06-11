@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled, { keyframes } from 'styled-components';
 import '../styles/Home.css';
+import ladyJustice from '../images/ladyjustice.png';
 
 const fadeIn = keyframes`
   from {
@@ -97,7 +98,7 @@ const HeroSubheading = styled.p`
 const HeroImage = styled.img`
   width: 340px;
   height: 340px;
-  object-fit: contain;
+  object-fit: cover;
   border-radius: 24px;
   box-shadow: 0 4px 16px rgba(26,35,126,0.07);
   background: #e0e0e0;
@@ -182,21 +183,21 @@ const CoreValue = styled.li`
 const Footer = styled.footer`
   background: #1a237e;
   color: white;
-  padding: 6rem 2rem;
+  padding: 2rem 1.5rem;
 `;
 
 const FooterContent = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 4rem;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1.5rem;
 `;
 
 const FooterSection = styled.div`
   h3 {
-    font-size: 1.4rem;
-    margin-bottom: 2rem;
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
     font-weight: 600;
   }
 
@@ -206,8 +207,8 @@ const FooterSection = styled.div`
   }
 
   li {
-    margin-bottom: 1rem;
-    font-size: 1.1rem;
+    margin-bottom: 0.35rem;
+    font-size: 0.8rem;
   }
 
   a {
@@ -223,11 +224,11 @@ const FooterSection = styled.div`
 
 const Copyright = styled.div`
   text-align: center;
-  padding-top: 3rem;
-  margin-top: 3rem;
+  padding-top: 1rem;
+  margin-top: 1rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   color: rgba(255, 255, 255, 0.6);
-  font-size: 1.1rem;
+  font-size: 0.8rem;
 `;
 
 const CTAButton = styled.button`
@@ -310,6 +311,125 @@ const CardText = styled.p`
   line-height: 1.6;
 `;
 
+const HowItWorksSection = styled.section`
+  padding: 6rem 2rem;
+  background: white;
+  text-align: center;
+`;
+
+const HowItWorksGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin: 3rem auto 0;
+  max-width: 1200px;
+  padding: 0 1rem;
+
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const HowItWorksCard = styled.div`
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 16px rgba(26,35,126,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(26,35,126,0.12);
+  }
+
+  h3 {
+    color: #1a237e;
+    font-size: 1.5rem;
+    margin: 1.5rem 0 1rem;
+    font-weight: 700;
+  }
+
+  p {
+    color: #444;
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+`;
+
+const FeaturesGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+  margin: 3rem auto 0;
+  max-width: 1200px;
+  padding: 0 1rem;
+
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (max-width: 600px) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+`;
+
+const FeatureCard = styled.div`
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 16px rgba(26,35,126,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(26,35,126,0.12);
+  }
+
+  h3 {
+    color: #1a237e;
+    font-size: 1.5rem;
+    margin: 1.5rem 0 1rem;
+    font-weight: 700;
+  }
+
+  p {
+    color: #444;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+`;
+
+const FeatureIcon = styled.div`
+  width: 80px;
+  height: 80px;
+  background: #f0f3ff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+
+  svg {
+    width: 40px;
+    height: 40px;
+    color: #1a237e;
+  }
+`;
+
 const Home: React.FC = () => {
   const navigate = useNavigate();
 
@@ -333,7 +453,7 @@ const Home: React.FC = () => {
           <CTAButton onClick={handleTryNow}>Try Now</CTAButton>
         </HeroLeft>
         <HeroRight>
-          <HeroImage src="/images/ladyjustice.png" alt="NyayaCop Hero" />
+          <HeroImage src={ladyJustice} alt="Lady Justice" />
         </HeroRight>
         <ScrollDown onClick={scrollToVision} aria-label="Scroll to Our Vision">
           <svg viewBox="0 0 24 24" fill="none"><path d="M12 5v14m0 0l-7-7m7 7l7-7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
@@ -385,84 +505,117 @@ const Home: React.FC = () => {
       </Section>
 
       <Section>
-        <SectionTitle>How It Works</SectionTitle>
-        <SectionContent>
-          <Card theme="dark">
-            <CardIcon theme="dark">📝</CardIcon>
-            <CardTitle theme="dark">File Your Complaint</CardTitle>
-            <CardText theme="dark">
-              Submit your complaint in any Indian language. Our AI will analyze and suggest relevant legal sections.
-            </CardText>
-          </Card>
-          <Card theme="dark">
-            <CardIcon theme="dark">⚖️</CardIcon>
-            <CardTitle theme="dark">Legal Analysis</CardTitle>
-            <CardText theme="dark">
-              Get instant recommendations for IPC/CrPC sections and relevant case laws.
-            </CardText>
-          </Card>
-          <Card theme="dark">
-            <CardIcon theme="dark">📱</CardIcon>
-            <CardTitle theme="dark">Track Progress</CardTitle>
-            <CardText theme="dark">
-              Monitor your FIR status and receive updates on case progress in real-time.
-            </CardText>
-          </Card>
-        </SectionContent>
+        <SectionTitle>How This Works</SectionTitle>
+        <SectionText>
+          Our platform makes it easy to report and track your case
+        </SectionText>
+        <HowItWorksGrid>
+          <HowItWorksCard>
+            <CardIcon>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+            </CardIcon>
+            <h3>File Your Complaint</h3>
+            <p>Fill out our simple form to submit your complaint with all necessary details</p>
+          </HowItWorksCard>
+
+          <HowItWorksCard>
+            <CardIcon>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+              </svg>
+            </CardIcon>
+            <h3>Track Progress</h3>
+            <p>Monitor your case status and receive updates in real-time</p>
+          </HowItWorksCard>
+
+          <HowItWorksCard>
+            <CardIcon>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
+              </svg>
+            </CardIcon>
+            <h3>Get Support</h3>
+            <p>Receive guidance and support from our legal experts throughout the process</p>
+          </HowItWorksCard>
+        </HowItWorksGrid>
       </Section>
 
       <Section>
         <SectionTitle>Who is it for?</SectionTitle>
-        <SectionContent>
-          <Card>
-            <CardIcon>👮</CardIcon>
-            <CardTitle>Police Officers</CardTitle>
-            <CardText>
-              Get instant legal assistance while filing FIRs, ensuring accuracy and compliance.
-            </CardText>
-          </Card>
-          <Card>
-            <CardIcon>👥</CardIcon>
-            <CardTitle>Citizens</CardTitle>
-            <CardText>
-              Draft complaints correctly with AI guidance and track FIR status in real-time.
-            </CardText>
-          </Card>
-          <Card>
-            <CardIcon>⚖️</CardIcon>
-            <CardTitle>Legal Researchers</CardTitle>
-            <CardText>
-              Explore mapped sections and case laws for comprehensive legal research.
-            </CardText>
-          </Card>
-        </SectionContent>
+        <SectionText>
+          Our platform serves various stakeholders in the legal system
+        </SectionText>
+        <FeaturesGrid>
+          <FeatureCard>
+            <FeatureIcon>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              </svg>
+            </FeatureIcon>
+            <h3>Victims</h3>
+            <p>File complaints and track your case progress with ease</p>
+          </FeatureCard>
+
+          <FeatureCard>
+            <FeatureIcon>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+            </FeatureIcon>
+            <h3>Police Officers</h3>
+            <p>Manage and process complaints efficiently</p>
+          </FeatureCard>
+
+          <FeatureCard>
+            <FeatureIcon>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+              </svg>
+            </FeatureIcon>
+            <h3>Legal Experts</h3>
+            <p>Provide guidance and support to victims</p>
+          </FeatureCard>
+        </FeaturesGrid>
       </Section>
 
       <Section>
         <SectionTitle>Key Features</SectionTitle>
-        <SectionContent>
-          <Card theme="dark">
-            <CardIcon theme="dark">🔒</CardIcon>
-            <CardTitle theme="dark">Secure Access</CardTitle>
-            <CardText theme="dark">
-              Role-based authentication for police officers and citizens.
-            </CardText>
-          </Card>
-          <Card theme="dark">
-            <CardIcon theme="dark">📊</CardIcon>
-            <CardTitle theme="dark">Smart Dashboards</CardTitle>
-            <CardText theme="dark">
-              Track FIRs, analyze trends, and monitor case progress.
-            </CardText>
-          </Card>
-          <Card theme="dark">
-            <CardIcon theme="dark">🌐</CardIcon>
-            <CardTitle theme="dark">Multilingual Support</CardTitle>
-            <CardText theme="dark">
-              File complaints in multiple Indian languages with accurate translations.
-            </CardText>
-          </Card>
-        </SectionContent>
+        <SectionText>
+          Discover what makes our platform unique
+        </SectionText>
+        <FeaturesGrid>
+          <FeatureCard>
+            <FeatureIcon>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+              </svg>
+            </FeatureIcon>
+            <h3>Secure Platform</h3>
+            <p>Your data is protected with advanced security measures</p>
+          </FeatureCard>
+
+          <FeatureCard>
+            <FeatureIcon>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </FeatureIcon>
+            <h3>Real-time Updates</h3>
+            <p>Stay informed about your case progress instantly</p>
+          </FeatureCard>
+
+          <FeatureCard>
+            <FeatureIcon>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
+              </svg>
+            </FeatureIcon>
+            <h3>Expert Support</h3>
+            <p>Get guidance from experienced legal professionals</p>
+          </FeatureCard>
+        </FeaturesGrid>
       </Section>
 
       <Footer>
@@ -487,9 +640,9 @@ const Home: React.FC = () => {
           <FooterSection>
             <h3>Team</h3>
             <ul>
-              <li>Smart India Hackathon 2025</li>
-              <li>Team NyayaCop</li>
-              <li>Made with ❤️ in India</li>
+              <li>CodeVerse Hackathon</li>
+              <li>Team Infinite Loopers</li>
+              <li>Made with ❤️ </li>
             </ul>
           </FooterSection>
         </FooterContent>

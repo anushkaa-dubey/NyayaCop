@@ -57,7 +57,7 @@ const NavLink = styled(Link)`
 
 const AuthButtons = styled.div`
   display: flex;
-  gap: 1rem;
+  gap: 0.5rem;
 `;
 
 const LoginButton = styled.button`
@@ -171,10 +171,10 @@ const Navbar: React.FC = () => {
               <Button onClick={handleLogout}>Logout</Button>
             </>
           ) : (
-            <>
+            <AuthButtons>
               <LoginButton as={Link} to="/login">Login</LoginButton>
               <SignupButton as={Link} to="/signup">Sign Up</SignupButton>
-            </>
+            </AuthButtons>
           )}
         </NavLinks>
       </NavContainer>
